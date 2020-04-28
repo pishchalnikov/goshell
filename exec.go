@@ -11,6 +11,9 @@ func execInput(input string) error {
 	args := strings.Split(input, " ")
 
 	if args[0] == "cd" {
+		if len(args) < 2 {
+			return os.Chdir(os.Getenv("HOME"))
+		}
 		return os.Chdir(args[1])
 	}
 
