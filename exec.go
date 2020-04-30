@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+var exit = os.Exit
+
 func execInput(input string) error {
 	input = strings.TrimSuffix(input, "\n")
 	args := strings.Split(input, " ")
@@ -17,7 +19,7 @@ func execInput(input string) error {
 		}
 		return os.Chdir(args[1])
 	case "exit":
-		os.Exit(0)
+		exit(0)
 	}
 
 	cmd := exec.Command(args[0], args[1:]...)
